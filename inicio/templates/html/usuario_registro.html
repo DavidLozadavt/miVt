@@ -1,0 +1,60 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | Virtual Technology</title>
+    <link rel="stylesheet" href="{% static 'inicio/css/registro.css' %}">
+</head>
+<body>
+    <main class="contenedor">
+        <section class="marca">
+            <div class="logo">VT</div>
+            <h1>Virtual Technology</h1>
+            <p>Tecnología que transforma ideas.</p>
+            <h2>Crea tu cuenta</h2>
+            <p>Regístrate para acceder a nuestra plataforma.</p>
+        </section>
+
+        <section class="formulario">
+            <h2>Registro de usuarios</h2>
+            <p>Completa tus datos para comenzar.</p>
+
+            
+            <form method="POST" action="{% url 'registro_usuario' %}">
+                {% csrf_token %}
+
+                {{ formulario.non_field_errors }}
+
+                {% for campo in formulario %}
+                    <div class="campo">
+                        <label for="{{ campo.id_for_label }}">
+                            {{ campo.label }}
+                        </label>
+
+                        {{ campo }}
+
+                        {% for error in campo.errors %}
+                            <small class="error">{{ error }}</small>
+                        {% endfor %}
+
+                        {% if campo.help_text %}
+                            <small>{{ campo.help_text }}</small>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <button type="submit">Crear cuenta</button>
+            </form>
+
+
+            <p class="enlace">
+                ¿Ya tienes una cuenta?
+                <a href="{% url 'login' %}">Iniciar sesión</a>
+            </p>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,131 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido | Virtual Technology</title>
+    <link rel="stylesheet" href="{% static 'inicio/css/bienvenido.css' %}">
+</head>
+<body>
+
+    <header class="encabezado">
+        <div class="marca">
+            <div class="marca-icono">V</div>
+            <div class="marca-texto">
+                <strong>Virtual</strong><span>Technology</span>
+            </div>
+        </div>
+
+        <div class="usuario">
+            <span>{{ request.user.username }}</span>
+
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="salir">
+                    Cerrar sesión
+                </button>
+            </form>
+        </div>
+    </header>
+
+    <main class="contenedor">
+
+        <section class="bienvenida">
+            <div>
+                <span class="etiqueta">PANEL PRINCIPAL</span>
+
+                <h1>
+                    ¡Bienvenido,
+                    {% if request.user.first_name %}
+                        {{ request.user.first_name }}
+                    {% else %}
+                        {{ request.user.username }}
+                    {% endif %}
+                    !
+                </h1>
+
+                <p>
+                    Nos alegra tenerte aquí. Desde este espacio
+                    podrás gestionar las funcionalidades de
+                    nuestra plataforma.
+                </p>
+
+                <div class="datos">
+                    <span>Usuario: <strong>{{ request.user.username }}</strong></span>
+                    <span>Correo: <strong>{{ request.user.email|default:"No registrado" }}</strong></span>
+                </div>
+            </div>
+
+            <div class="ilustracion" aria-hidden="true">
+                <div class="circulo">
+                    <span>VT</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="modulos">
+            <div class="titulo-seccion">
+                <div>
+                    <span class="etiqueta">TU ESPACIO DE TRABAJO</span>
+                    <h2>Módulos de la plataforma</h2>
+                </div>
+                <p>Selecciona una opción para comenzar.</p>
+            </div>
+
+            <div class="tarjetas">
+
+                <article class="tarjeta">
+                    <div class="icono">👤</div>
+                    <h3>Usuarios</h3>
+                    <p>
+                        Administración de usuarios,
+                        información personal y perfiles.
+                    </p>
+                    <span class="estado">Próximamente</span>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="icono">🚗</div>
+                    <h3>Vehículos</h3>
+                    <p>
+                        Registro, consulta y administración
+                        de vehículos del sistema.
+                    </p>
+                    <span class="estado">Próximamente</span>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="icono">🪪</div>
+                    <h3>Conductores</h3>
+                    <p>
+                        Gestión de conductores y
+                        documentación relacionada.
+                    </p>
+                    <span class="estado">Próximamente</span>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="icono">🗺️</div>
+                    <h3>Rutas y viajes</h3>
+                    <p>
+                        Administración de rutas,
+                        programación y seguimiento de viajes.
+                    </p>
+                    <span class="estado">Próximamente</span>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="pie">
+        <p>© 2026 Virtual Technology. Todos los derechos reservados.</p>
+        <span>Tecnología que transforma ideas.</span>
+    </footer>
+
+</body>
+</html>

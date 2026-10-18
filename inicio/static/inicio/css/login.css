@@ -16,7 +16,13 @@
     h2 { margin:10px 0 8px; font-size:30px; letter-spacing:-.8px; }
     .subtitle { color:var(--muted); margin:0 0 32px; line-height:1.5; font-size:14px; }
     label { display:block; font-weight:650; font-size:13px; margin-bottom:9px; }
-    .field { margin-bottom:21px; }
+    .campo { margin-bottom: 21px; }
+    .campo label {
+    display: block;
+    font-weight: 650;
+    font-size: 13px;
+    margin-bottom: 9px;
+    }
     .control { position:relative; }
     input { width:100%; height:48px; padding:0 14px; border:1px solid var(--border); border-radius:10px; outline:none; font-size:14px; transition:border .2s,box-shadow .2s; }
     input:focus { border-color:var(--orange); box-shadow:0 0 0 3px rgba(244,119,33,.12); }
@@ -24,11 +30,86 @@
     .toggle { position:absolute; right:8px;top:7px; border:0; background:transparent; color:var(--muted); padding:8px; cursor:pointer; font-size:12px; font-weight:700; }
     .actions { display:flex; justify-content:flex-end; margin:-4px 0 23px; }
     .forgot { color:#c75b19; text-decoration:none; font-size:12px; }
-    .submit { width:100%; height:49px; background:var(--orange); color:white; border:0; border-radius:10px; font-size:15px; font-weight:750; cursor:pointer; transition:background .2s,transform .2s; }
-    .submit:hover { background:#df6215; transform:translateY(-1px); }
-    .submit:disabled { opacity:.65; cursor:wait; }
+    
+/* BOTÓN INICIAR SESIÓN */
+
+.submit {
+    display: block;
+    width: 100%;
+    height: 52px;
+    margin-top: 12px;
+
+    background: linear-gradient(135deg, #f47721, #e85b16);
+    color: #ffffff;
+
+    border: none;
+    border-radius: 11px;
+
+    font-size: 15px;
+    font-weight: 750;
+    letter-spacing: 0.4px;
+
+    cursor: pointer;
+
+    box-shadow: 0 7px 20px rgba(244, 119, 33, 0.25);
+
+    transition:
+        background 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
+}
+
+.submit:hover {
+    background: linear-gradient(135deg, #e96718, #d64e0e);
+    transform: translateY(-2px);
+    box-shadow: 0 11px 25px rgba(244, 119, 33, 0.35);
+}
+
+.submit:active {
+    transform: translateY(0);
+}
+
+.submit:focus-visible {
+    outline: 3px solid rgba(244, 119, 33, 0.4);
+    outline-offset: 3px;
+}
+
+.submit:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
+}
+
     #message { min-height:22px; margin:15px 0 0; font-size:13px; line-height:1.4; }
     .error { color:#b42318; } .success { color:#087443; }
     .footer { margin-top:30px; text-align:center; font-size:12px; color:#8a94a3; }
     @media(max-width:720px){ .login{grid-template-columns:1fr; max-width:470px;} .brand{min-height:185px;padding:26px 30px;} .brand h1{font-size:24px;margin:20px 0 6px;} .brand p,.brand small{display:none;} .content{padding:38px 30px;} }
   
+/* ENLACE PARA REGISTRARSE */
+
+/* ENLACE DE REGISTRO */
+
+.content .registro-enlace {
+    display: block;
+    width: 100%;
+    margin: 28px 0 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: #697586;
+}
+
+.content .registro-enlace a {
+    display: inline-block;
+    margin-left: 5px;
+    color: #f47721;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.content .registro-enlace a:hover {
+    color: #c94f10;
+    text-decoration: underline;
+}

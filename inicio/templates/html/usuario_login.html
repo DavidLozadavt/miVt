@@ -18,17 +18,50 @@
       <span class="eyebrow">Bienvenido de nuevo</span>
       <h2>Iniciar sesión</h2>
       <p class="subtitle">Ingresa tus credenciales para acceder a la plataforma.</p>
-      <form id="loginForm" novalidate>
-        <div class="field"><label for="username">Usuario</label><input id="username" name="username" type="text" placeholder="Ingresa tu usuario" autocomplete="username" required></div>
-        <div class="field"><label for="password">Contraseña</label><div class="control"><input class="password-input" id="password" name="password" type="password" placeholder="Ingresa tu contraseña" autocomplete="current-password" required><button class="toggle" type="button" id="togglePassword" aria-label="Mostrar contraseña">Mostrar</button></div></div>
-        <div class="actions"><a class="forgot" href="mailto:soporte@virtualt.org?subject=Recuperar%20acceso">¿Olvidaste tu contraseña?</a></div>
-        <button class="submit" type="submit" id="submitBtn">Ingresar →</button>
-        <p id="message" role="status" aria-live="polite"></p>
+      
+      <form method="POST" action="{% url 'login' %}">
+          {% csrf_token %}
+
+          <div class="campo">
+              <label for="username">Usuario</label>
+              <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  required
+              >
+          </div>
+
+          <div class="campo">
+              <label for="password">Contraseña</label>
+              <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  required
+              >
+          </div>
+
+          {% if mensaje %}
+              <p class="error">{{ mensaje }}</p>
+          {% endif %}
+
+         <button type="submit" class="submit">
+            Iniciar sesión
+        </button>
       </form>
+
+    <p class="registro-enlace">
+        ¿No tienes cuenta?
+        <a href="{% url 'registro_usuario' %}">
+            Regístrate
+        </a>
+    </p>
+
       <div class="footer">Plataforma de acceso seguro · Virtual Technology</div>
     </section>
   </main>
-  <script src="{% static 'inicio/js/login.js' %}"></script>
+  
     
   
 </body>
